@@ -11,6 +11,7 @@
       2,
       "always-multiline"
     ],
-    "no-unexpected-multiline": 2
+    "no-unexpected-multiline": 2,
+    "space-before-function-paren": 0
   }
 }
