@@ -2,8 +2,15 @@
   "extends": [
     "standard",
     "plugin:ava/recommended"
-  ]
+  ],
   "plugins": [
     "ava"
-  ]
+  ],
+  "rules": {
+    "comma-dangle": [
+      2,
+      "always-multiline"
+    ],
+    "no-unexpected-multiline": 2
+  }
 }
