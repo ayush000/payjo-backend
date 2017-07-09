@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
     required: [true, 'can\'t be blank'],
     validate: [validateEmail, 'Please fill a valid email address'],
     index: true,
+    trim: true,
   },
   password: String,
 }, { timestamps: true })

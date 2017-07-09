@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const logger = require('koa-logger')
 const cors = require('kcors')
 require('./models/User')
+require('./models/Product')
 const routes = require('./routes')
 const app = new Koa()
 

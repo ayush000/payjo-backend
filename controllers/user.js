@@ -25,7 +25,7 @@ module.exports = {
         'Invalid user or password'
       )
     }
-    ctx.body = ctx.body = {
+    ctx.body = {
       email: user.email,
       token: user.generateJWT(),
     }
