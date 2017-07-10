@@ -33,7 +33,6 @@ module.exports = {
         'Invalid fields'
       )
     }
-
     ctx.body = await Product.findByIdAndUpdate(id, { $set: product }, { new: true })
   },
   async delete(ctx) {
