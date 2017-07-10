@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 const Product = mongoose.model('Product')
 module.exports = {
+  // Create new product
   async create(ctx) {
     let { product = {} } = ctx.request.body
-    console.log(product)
     if (!product.name ||
       !product.code ||
       !product.quantity ||
@@ -18,9 +18,11 @@ module.exports = {
     await p.save()
     ctx.body = p
   },
+  // Get all products
   async get(ctx) {
     ctx.body = await Product.find({})
   },
+  // Update an existing product
   async update(ctx) {
     let { product = {} } = ctx.request.body
     const { id } = ctx.params
@@ -35,6 +37,7 @@ module.exports = {
     }
     ctx.body = await Product.findByIdAndUpdate(id, { $set: product }, { new: true })
   },
+  // Delete an existing product
   async delete(ctx) {
     const { id } = ctx.params
     if (!id) {

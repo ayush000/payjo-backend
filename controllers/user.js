@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const User = mongoose.model('User')
 
 module.exports = {
+  // Login existing user
   async login(ctx) {
     const { body } = ctx.request
     if (!body.user.email || !body.user.password) {
@@ -18,6 +19,7 @@ module.exports = {
         'Invalid user or password'
       )
     }
+    // Compare password with hash
     const passwordValid = await bcrypt.compare(body.user.password, user.password)
     if (!passwordValid) {
       ctx.throw(
@@ -30,6 +32,7 @@ module.exports = {
       token: user.generateJWT(),
     }
   },
+  // Register a new user
   async register(ctx) {
     const { body } = ctx.request
     let { user = {} } = body
@@ -41,6 +44,7 @@ module.exports = {
     }
     const u = new User()
     u.email = user.email
+    // Create hash from password and store in database
     u.password = await bcrypt.hash(user.password, 10)
     await u.save()
     ctx.body = {

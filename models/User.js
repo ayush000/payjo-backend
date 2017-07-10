@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(uniqueValidator, { message: 'is already taken' })
 
+// Generate json web token for the user
 userSchema.methods.generateJWT = () => jwt.sign({
   id: this._id,
   email: this.email,
